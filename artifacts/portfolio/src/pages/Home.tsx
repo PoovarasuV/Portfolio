@@ -421,6 +421,7 @@ const Home = () => {
                 textColor: "text-primary",
                 icon: "💪",
                 tags: ["React", "Animations", "Membership Portal"],
+                images: ["/rolex-1.png","/rolex-2.png","/rolex-3.png","/rolex-4.png","/rolex-5.png","/rolex-6.png"],
                 points: [
                   "Dynamic fitness studio website with class schedules and trainer profiles.",
                   "Membership plan showcase with lead capture and inquiry forms.",
