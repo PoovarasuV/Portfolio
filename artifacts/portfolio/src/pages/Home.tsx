@@ -16,6 +16,7 @@ const salesImages = [
 
 const fitaiImages = [
   "/fitai-1.png",
+  "/fitai-2.png",
 ];
 
 const constImages = [
