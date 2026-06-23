@@ -79,7 +79,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-black text-foreground selection:bg-primary/30 selection:text-primary">
+    <div className="relative min-h-screen bg-black text-foreground selection:bg-primary/30 selection:text-primary overflow-x-hidden">
       <ParticleBackground />
       <div className="scanlines"></div>
       
@@ -95,14 +95,15 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="w-full flex flex-col md:flex-row items-center justify-between gap-12"
           >
-            <div className="flex-1 space-y-6">
+            <div className="flex-1 min-w-0 space-y-6">
               <div className="inline-block px-4 py-1.5 rounded-full border border-primary/50 bg-primary/10 text-primary text-sm font-bold tracking-wider uppercase mb-4 shadow-[0_0_15px_rgba(0,255,136,0.3)] backdrop-blur-sm">
                 System Initialized // Status: Online
               </div>
               
               <GlitchText 
                 text="POOVARASU V" 
-                className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter whitespace-nowrap" 
+                className="font-black tracking-tighter whitespace-nowrap" 
+                style={{ fontSize: "clamp(2rem, 5.5vw, 5rem)" } as React.CSSProperties}
               />
               
               <div className="text-2xl md:text-3xl lg:text-4xl font-display text-muted-foreground h-12 flex items-center">
@@ -138,7 +139,7 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[440px] lg:h-[440px] shrink-0"
+              className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] shrink-0 mx-auto md:mx-0"
             >
               <div className="absolute inset-0 rounded-full border-2 border-primary/30 border-dashed animate-[spin_10s_linear_infinite]"></div>
               <div className="absolute inset-[-10px] rounded-full border border-secondary/20 animate-[spin_15s_linear_infinite_reverse]"></div>
