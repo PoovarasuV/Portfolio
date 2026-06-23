@@ -435,6 +435,7 @@ const Home = () => {
                 textColor: "text-accent",
                 icon: "🎓",
                 tags: ["React", "Course Catalog", "LMS UI"],
+                images: ["/edu-1.png","/edu-2.png","/edu-3.png","/edu-4.png","/edu-5.png","/edu-6.png","/edu-7.png","/edu-8.png","/edu-9.png","/edu-10.png"],
                 points: [
                   "Customized e-learning platform with course catalog and student dashboard.",
                   "Instructor profiles, video lesson previews, and enrollment flows.",
