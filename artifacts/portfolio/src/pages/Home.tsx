@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhoneAlt, FaBrain, FaCode, FaRobot, FaServer, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhoneAlt, FaBrain, FaCode, FaRobot, FaServer, FaTimes, FaChevronLeft, FaChevronRight, FaGlobe, FaMobileAlt, FaShoppingCart, FaBolt, FaPaintBrush } from 'react-icons/fa';
 import ParticleBackground from '@/components/ParticleBackground';
 import GlitchText from '@/components/GlitchText';
 import Typewriter from '@/components/Typewriter';
@@ -354,6 +354,118 @@ const Home = () => {
           </div>
         </motion.section>
 
+        {/* FENZO FREELANCING SECTION */}
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="py-24 border-t border-white/10"
+        >
+          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center">
+            <span className="text-secondary mr-4">04.</span>
+            <span className="neon-text-cyan">Freelance_Studio</span> (Fenzo Web Design)
+          </motion.h2>
+
+          {/* Brand banner */}
+          <motion.div variants={itemVariants} className="relative mb-12 border border-secondary/30 bg-gradient-to-r from-secondary/5 to-accent/5 p-8 overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-secondary to-accent"></div>
+            <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-secondary/5 blur-2xl"></div>
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div>
+                <h3 className="text-3xl font-black font-display tracking-tight mb-1">
+                  <span className="neon-text-cyan">FENZO</span>{' '}
+                  <span className="text-white">WEB DESIGN</span>
+                </h3>
+                <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+                  Building digital products that help companies scale faster — websites, mobile apps, e-commerce platforms, AI solutions, business automation systems, and logo designs.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 shrink-0">
+                {[
+                  { icon: <FaGlobe />, label: "Websites" },
+                  { icon: <FaMobileAlt />, label: "Mobile Apps" },
+                  { icon: <FaShoppingCart />, label: "E-Commerce" },
+                  { icon: <FaBolt />, label: "AI Solutions" },
+                  { icon: <FaPaintBrush />, label: "Logo Design" },
+                ].map(s => (
+                  <div key={s.label} className="flex items-center gap-2 px-3 py-2 border border-secondary/40 bg-black/40 text-secondary text-sm font-mono">
+                    {s.icon} {s.label}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Client project cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                client: "Dr. Sushma Dental Clinic",
+                type: "Healthcare Website",
+                color: "border-secondary",
+                textColor: "text-secondary",
+                icon: "🦷",
+                tags: ["React", "Tailwind CSS", "Responsive Design"],
+                points: [
+                  "Customized clinic website with appointment booking and service showcase.",
+                  "Patient-friendly UI with treatment gallery and doctor profile.",
+                  "Mobile-responsive design optimized for local SEO.",
+                ]
+              },
+              {
+                client: "RoleX Fitness Studio",
+                type: "Fitness & Gym Website",
+                color: "border-primary",
+                textColor: "text-primary",
+                icon: "💪",
+                tags: ["React", "Animations", "Membership Portal"],
+                points: [
+                  "Dynamic fitness studio website with class schedules and trainer profiles.",
+                  "Membership plan showcase with lead capture and inquiry forms.",
+                  "High-energy design with bold visuals and animated sections.",
+                ]
+              },
+              {
+                client: "Online Education Platform",
+                type: "EdTech Website",
+                color: "border-accent",
+                textColor: "text-accent",
+                icon: "🎓",
+                tags: ["React", "Course Catalog", "LMS UI"],
+                points: [
+                  "Customized e-learning platform with course catalog and student dashboard.",
+                  "Instructor profiles, video lesson previews, and enrollment flows.",
+                  "Scalable UI designed for growing course libraries.",
+                ]
+              },
+            ].map((project, idx) => (
+              <motion.div
+                key={idx}
+                variants={itemVariants}
+                className={`group relative bg-card border ${project.color}/30 p-6 flex flex-col transition-all duration-500 hover:-translate-y-2 hover:${project.color}/60`}
+              >
+                <div className="text-3xl mb-4">{project.icon}</div>
+                <span className={`text-xs font-mono uppercase tracking-widest ${project.textColor} mb-2`}>{project.type}</span>
+                <h3 className="text-xl font-bold font-display text-white mb-4">{project.client}</h3>
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {project.tags.map(tag => (
+                    <span key={tag} className={`text-xs font-mono px-2 py-1 bg-black border ${project.color}/40 text-white/70`}>{tag}</span>
+                  ))}
+                </div>
+                <ul className="space-y-2 mt-auto text-sm text-muted-foreground">
+                  {project.points.map((pt, i) => (
+                    <li key={i} className="flex items-start">
+                      <span className={`${project.textColor} mr-2 mt-0.5`}>›</span>
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
         {/* SKILLS SECTION */}
         <motion.section 
           initial="hidden"
@@ -363,7 +475,7 @@ const Home = () => {
           className="py-24 border-t border-white/10"
         >
           <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-display font-bold mb-12 flex items-center">
-            <span className="text-primary mr-4">04.</span> 
+            <span className="text-primary mr-4">05.</span> 
             <span className="neon-text-green">Core_Capabilities</span> (Skills)
           </motion.h2>
 
