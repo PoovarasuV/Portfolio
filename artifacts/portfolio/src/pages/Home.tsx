@@ -373,12 +373,16 @@ const Home = () => {
             <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-secondary/5 blur-2xl"></div>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>
-                <h3 className="text-3xl font-black font-display tracking-tight mb-1">
-                  <span className="neon-text-cyan">FENZO</span>{' '}
-                  <span className="text-white">WEB DESIGN</span>
-                </h3>
+                <div className="flex items-center gap-3 mb-1">
+                  <h3 className="text-3xl font-black font-display tracking-tight">
+                    <span className="neon-text-cyan">FENZO</span>{' '}
+                    <span className="text-white">WEB DESIGN</span>
+                  </h3>
+                  <span className="px-2 py-0.5 text-xs font-mono border border-secondary/50 text-secondary bg-secondary/10 uppercase tracking-widest">Founder &amp; CEO</span>
+                </div>
+                <p className="text-white/50 text-sm font-mono mb-2">Poovarasu V — Owner &amp; Lead Developer</p>
                 <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-                  Building digital products that help companies scale faster — websites, mobile apps, e-commerce platforms, AI solutions, business automation systems, and logo designs.
+                  My own digital agency — building websites, mobile apps, e-commerce platforms, AI solutions, business automation systems, and logo designs that help companies scale faster.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 shrink-0">
@@ -405,7 +409,7 @@ const Home = () => {
                 type: "Healthcare Website",
                 color: "border-secondary",
                 textColor: "text-secondary",
-                icon: "🦷",
+                icon: "",
                 tags: ["React", "Tailwind CSS", "Responsive Design"],
                 images: ["/dental-1.png","/dental-2.png","/dental-3.png","/dental-4.png","/dental-5.png","/dental-6.png","/dental-7.png","/dental-8.png","/dental-9.png","/dental-10.png"],
                 points: [
@@ -419,7 +423,7 @@ const Home = () => {
                 type: "Fitness & Gym Website",
                 color: "border-primary",
                 textColor: "text-primary",
-                icon: "💪",
+                icon: "",
                 tags: ["React", "Animations", "Membership Portal"],
                 images: ["/rolex-1.png","/rolex-2.png","/rolex-3.png","/rolex-4.png","/rolex-5.png","/rolex-6.png"],
                 points: [
@@ -433,7 +437,7 @@ const Home = () => {
                 type: "EdTech Website",
                 color: "border-accent",
                 textColor: "text-accent",
-                icon: "🎓",
+                icon: "",
                 tags: ["React", "Course Catalog", "LMS UI"],
                 images: ["/edu-1.png","/edu-2.png","/edu-3.png","/edu-4.png","/edu-5.png","/edu-6.png","/edu-7.png","/edu-8.png","/edu-9.png","/edu-10.png"],
                 points: [
@@ -448,7 +452,7 @@ const Home = () => {
                 variants={itemVariants}
                 className={`group relative bg-card border ${project.color}/30 p-6 flex flex-col transition-all duration-500 hover:-translate-y-2 hover:${project.color}/60`}
               >
-                <div className="text-3xl mb-4">{project.icon}</div>
+                {project.icon && <div className="text-3xl mb-4">{project.icon}</div>}
                 <span className={`text-xs font-mono uppercase tracking-widest ${project.textColor} mb-2`}>{project.type}</span>
                 <h3 className="text-xl font-bold font-display text-white mb-4">{project.client}</h3>
                 <div className="flex flex-wrap gap-2 mb-5">
