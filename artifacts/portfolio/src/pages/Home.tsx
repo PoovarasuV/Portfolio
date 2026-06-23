@@ -1,11 +1,26 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhoneAlt, FaBrain, FaCode, FaRobot, FaDatabase, FaServer, FaChartLine } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhoneAlt, FaBrain, FaCode, FaRobot, FaServer, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import ParticleBackground from '@/components/ParticleBackground';
 import GlitchText from '@/components/GlitchText';
 import Typewriter from '@/components/Typewriter';
 
+const salesImages = [
+  "/sales-1.png",
+  "/sales-2.png",
+  "/sales-3.png",
+  "/sales-4.png",
+  "/sales-5.png",
+  "/sales-6.png",
+];
+
 const Home = () => {
+  const [lightbox, setLightbox] = useState<{ open: boolean; idx: number }>({ open: false, idx: 0 });
+
+  const openLightbox = (idx: number) => setLightbox({ open: true, idx });
+  const closeLightbox = () => setLightbox({ open: false, idx: 0 });
+  const prevImg = (e: React.MouseEvent) => { e.stopPropagation(); setLightbox(l => ({ ...l, idx: (l.idx - 1 + salesImages.length) % salesImages.length })); };
+  const nextImg = (e: React.MouseEvent) => { e.stopPropagation(); setLightbox(l => ({ ...l, idx: (l.idx + 1) % salesImages.length })); };
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -29,6 +44,7 @@ const Home = () => {
       stack: ["Python", "AWS", "LLM Workflows"],
       color: "border-primary",
       glow: "neon-border-green",
+      images: salesImages,
       desc: [
         "AI-based sales assistant for automating customer queries and improving product suggestions.",
         "Prompt-driven workflows for personalized interactions and structured response generation.",
@@ -270,7 +286,7 @@ const Home = () => {
                   ))}
                 </div>
                 
-                <ul className="space-y-3 mt-auto text-sm text-muted-foreground">
+                <ul className="space-y-3 text-sm text-muted-foreground">
                   {project.desc.map((bullet, i) => (
                     <li key={i} className="flex items-start">
                       <span className={`text-${project.color.split('-')[1]} mr-2`}>›</span>
@@ -278,6 +294,32 @@ const Home = () => {
                     </li>
                   ))}
                 </ul>
+
+                {'images' in project && project.images && (
+                  <div className="mt-6">
+                    <p className="text-xs font-mono text-muted-foreground mb-3 uppercase tracking-widest">// Screenshots</p>
+                    <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-primary/40 scrollbar-track-transparent">
+                      {(project.images as string[]).map((src, i) => (
+                        <button
+                          key={i}
+                          onClick={() => openLightbox(i)}
+                          className="relative shrink-0 w-40 h-24 overflow-hidden border border-primary/30 hover:border-primary transition-all duration-300 group/thumb"
+                          data-testid={`project-screenshot-${i}`}
+                        >
+                          <img
+                            src={src}
+                            alt={`Screenshot ${i + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover/thumb:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-black/40 group-hover/thumb:bg-black/10 transition-colors duration-300" />
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/thumb:opacity-100 transition-opacity">
+                            <span className="text-primary text-xs font-mono">[ view ]</span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>
@@ -371,6 +413,71 @@ const Home = () => {
           {' '}<span className="text-primary/60">{'<'}/{'>'}</span>
         </p>
       </footer>
+
+      {/* LIGHTBOX */}
+      <AnimatePresence>
+        {lightbox.open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+            onClick={closeLightbox}
+          >
+            <button
+              onClick={closeLightbox}
+              className="absolute top-5 right-5 text-white/60 hover:text-primary transition-colors"
+              data-testid="lightbox-close"
+            >
+              <FaTimes size={28} />
+            </button>
+
+            <button
+              onClick={prevImg}
+              className="absolute left-4 md:left-8 text-white/60 hover:text-primary transition-colors p-2"
+              data-testid="lightbox-prev"
+            >
+              <FaChevronLeft size={32} />
+            </button>
+
+            <motion.div
+              key={lightbox.idx}
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.92 }}
+              transition={{ duration: 0.2 }}
+              className="max-w-5xl w-full border border-primary/40 shadow-[0_0_40px_rgba(0,255,136,0.2)]"
+              onClick={e => e.stopPropagation()}
+            >
+              <img
+                src={salesImages[lightbox.idx]}
+                alt={`Screenshot ${lightbox.idx + 1}`}
+                className="w-full h-auto object-contain"
+              />
+              <div className="bg-black/80 px-4 py-2 flex items-center justify-between">
+                <span className="font-mono text-primary text-sm">AI Sales Assistant — Screenshot {lightbox.idx + 1} / {salesImages.length}</span>
+                <div className="flex gap-2">
+                  {salesImages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={e => { e.stopPropagation(); setLightbox(l => ({ ...l, idx: i })); }}
+                      className={`w-2 h-2 rounded-full transition-colors ${i === lightbox.idx ? 'bg-primary' : 'bg-white/20 hover:bg-white/50'}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            <button
+              onClick={nextImg}
+              className="absolute right-4 md:right-8 text-white/60 hover:text-primary transition-colors p-2"
+              data-testid="lightbox-next"
+            >
+              <FaChevronRight size={32} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
