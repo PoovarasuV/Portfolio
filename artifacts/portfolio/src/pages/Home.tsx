@@ -19,6 +19,15 @@ const fitaiImages = [
   "/fitai-2.png",
 ];
 
+const docImages = [
+  "/doc-1.png",
+  "/doc-2.png",
+  "/doc-3.png",
+  "/doc-4.png",
+  "/doc-5.png",
+  "/doc-6.png",
+];
+
 const constImages = [
   "/const-1.png",
   "/const-2.png",
@@ -98,6 +107,7 @@ const Home = () => {
       stack: ["Python", "LLM", "Vector DB"],
       color: "border-primary",
       glow: "neon-border-green",
+      images: docImages,
       desc: [
         "Built a RAG (Retrieval-Augmented Generation) pipeline for document Q&A.",
         "Chunking strategies, embeddings, and semantic search over company knowledge bases.",
