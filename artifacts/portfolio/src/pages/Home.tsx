@@ -102,7 +102,7 @@ const Home = () => {
               
               <GlitchText 
                 text="POOVARASU V" 
-                className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter" 
+                className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter whitespace-nowrap" 
               />
               
               <div className="text-2xl md:text-3xl lg:text-4xl font-display text-muted-foreground h-12 flex items-center">
@@ -138,7 +138,7 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative w-64 h-64 md:w-80 md:h-80 shrink-0"
+              className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[440px] lg:h-[440px] shrink-0"
             >
               <div className="absolute inset-0 rounded-full border-2 border-primary/30 border-dashed animate-[spin_10s_linear_infinite]"></div>
               <div className="absolute inset-[-10px] rounded-full border border-secondary/20 animate-[spin_15s_linear_infinite_reverse]"></div>
@@ -361,6 +361,15 @@ const Home = () => {
           </motion.div>
         </motion.section>
       </main>
+
+      <footer className="relative z-10 border-t border-white/10 py-8 text-center">
+        <p className="font-mono text-sm text-muted-foreground">
+          <span className="text-primary/60">{'<'}/{'>'}</span>{' '}
+          Developed by{' '}
+          <span className="neon-text-green font-bold">Poovarasu V</span>
+          {' '}<span className="text-primary/60">{'<'}/{'>'}</span>
+        </p>
+      </footer>
     </div>
   );
 };
