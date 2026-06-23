@@ -1,0 +1,34 @@
+Poovarasu V
+Phone-Alt 6383213966 | Envelope poovarasu16v@gmail.com | LINKEDIN linkedin.com/in/poovarasuv | Github github.com/PoovarasuV
+OBJECTIVE
+Integrated M.Tech Software Engineering student at VIT Vellore with experience in Generative AI, prompt
+engineering, and AI-assisted software development. Skilled in building LLM-powered workflows, automation
+solutions, and using Python, REST APIs, and AI tools for problem-solving and automation.
+EDUCATION
+Vellore Institute of Technology (VIT), Vellore 2022 – Present
+M.Tech (Integrated) Software Engineering CGPA: 7.78
+EXPERIENCE
+AI & Analytics Intern May 2025 – July 2025
+SV Builders, Vellore
+• Built a computer vision system using OpenCV/YOLO to detect floor plans and estimate material requirements
+• Developed predictive models for project cost and duration estimation using historical data (Pandas, NumPy)
+• Built a vision-based AI system to track brick usage and detect material theft and inconsistencies on-site
+• Built LLM-assisted workflows and structured AI outputs to improve reporting, documentation, and productivity
+PROJECTS
+• AI Sales Assistant for Retail Business (Python + AWS + LLM Workflows)
+– Developed an AI-based sales assistant to automate customer queries and improve product suggestions
+– Built prompt-driven workflows for personalized interactions and structured response generation
+– Integrated REST APIs and AWS-based automation workflows for lead handling and customer engagement
+– Designed reporting dashboards to analyze customer behavior and support revenue growth
+• AI Customer Engagement System for Fitness Studio (Prompt Engineering + Generative AI)
+– Developed an AI-powered customer engagement platform to improve lead conversion and retention
+– Built automated workflows for inquiry handling, personalized recommendations, and customer follow-ups
+– Used prompt-based AI interactions and structured outputs to support business operations
+TECHNICAL & PROFESSIONAL SKILLS
+• Programming: Python, Java, SQL, C++ (Basic)
+• Generative AI & LLMs: Prompt Engineering, LLM Fundamentals, Structured Outputs, AI Workflows, OpenCV
+• AI Tools & Automation: ChatGPT, GitHub Copilot, Workflow Automation, Prompt Optimization
+• Software Engineering: REST APIs, JSON, Git/GitHub, DBMS, AWS
+• Concepts: Data Structures, Algorithms, Debugging, Testing, Data handling
+SOFT SKILLS
+Problem Solving | Team Collaboration | Communication | Adaptability | Analytical Thinking
