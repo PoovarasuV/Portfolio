@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhoneAlt, FaBrain, FaCode, FaRobot, FaServer, FaTimes, FaChevronLeft, FaChevronRight, FaGlobe, FaMobileAlt, FaShoppingCart, FaBolt, FaPaintBrush } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhoneAlt, FaBrain, FaCode, FaRobot, FaServer, FaTimes, FaChevronLeft, FaChevronRight, FaGlobe, FaMobileAlt, FaShoppingCart, FaBolt, FaPaintBrush, FaShieldAlt, FaLock, FaFacebook, FaInstagram, FaQrcode } from 'react-icons/fa';
 import ParticleBackground from '@/components/ParticleBackground';
 import GlitchText from '@/components/GlitchText';
 import Typewriter from '@/components/Typewriter';
@@ -41,6 +41,7 @@ const constImages = [
 
 const Home = () => {
   const [lightbox, setLightbox] = useState<{ open: boolean; idx: number; images: string[]; label: string }>({ open: false, idx: 0, images: [], label: "" });
+  const [cardFlipped, setCardFlipped] = useState(false);
 
   const openLightbox = (idx: number, images: string[], label: string) => setLightbox({ open: true, idx, images, label });
   const closeLightbox = () => setLightbox(l => ({ ...l, open: false }));
@@ -180,16 +181,14 @@ const Home = () => {
               </div>
             </div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] shrink-0 mx-auto md:mx-0"
+              className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] shrink-0 mx-auto md:mx-0"
             >
-              <div className="absolute inset-0 rounded-full border-2 border-primary/30 border-dashed animate-[spin_10s_linear_infinite]"></div>
-              <div className="absolute inset-[-10px] rounded-full border border-secondary/20 animate-[spin_15s_linear_infinite_reverse]"></div>
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-accent/20 blur-xl"></div>
-              
+
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary shadow-[0_0_30px_rgba(0,255,136,0.4)] z-10 p-1">
                 <div className="w-full h-full rounded-full overflow-hidden bg-card relative">
                   <div className="absolute inset-0 bg-primary/10 mix-blend-overlay z-20"></div>
@@ -416,7 +415,7 @@ const Home = () => {
                 ]
               },
               {
-                client: "RoleX Fitness Studio",
+                client: "Rolex Fitness Studio",
                 type: "Fitness & Gym Website",
                 color: "border-primary",
                 textColor: "text-primary",
@@ -488,6 +487,191 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Business Card */}
+          <motion.div variants={itemVariants} className="flex justify-center mt-12">
+            <button
+              onClick={() => openLightbox(0, ["/business-card.png"], "Fenzo Web Design Business Card")}
+              className="relative w-96 h-56 border-2 border-secondary/50 rounded-xl overflow-hidden bg-black/40 cursor-pointer hover:border-secondary transition-colors duration-300 group"
+            >
+              <img
+                src="/business-card.png"
+                alt="Fenzo Web Design Business Card"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                <span className="text-secondary opacity-0 group-hover:opacity-100 transition-opacity font-mono text-sm">[ click to zoom ]</span>
+              </div>
+            </button>
+          </motion.div>
+        </motion.section>
+
+        {/* NETWORK SECURITY PROJECTS SECTION */}
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="py-24 border-t border-white/10"
+        >
+          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-display font-bold mb-12 flex items-center">
+            <span className="text-primary mr-4">05.</span>
+            <span className="neon-text-green">Network_Security_Audit</span> (Security Projects)
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Project 1: Password Audit */}
+            <motion.div variants={itemVariants} className="relative border border-primary/30 bg-card/40 backdrop-blur-sm p-8 md:p-10 hover:border-primary/50 transition-colors duration-300">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-white font-display mb-2 flex items-center gap-3">
+                  <FaShieldAlt className="text-primary" />
+                  Enterprise Password Security Audit
+                </h3>
+                <p className="text-primary text-sm font-mono mb-4">John the Ripper (Jumbo) on Kali Linux</p>
+                <a
+                  href="https://github.com/PoovarasuV/Enterprise-Password-Security-Audit-using-John-the-Ripper-Jumbo-on-Kali-Linux"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 border border-primary/50 text-primary hover:bg-primary hover:text-black transition-all duration-300 text-sm font-mono"
+                >
+                  <FaGithub /> View Repository
+                </a>
+              </div>
+              <div className="flex gap-2 shrink-0">
+                {["Kali Linux", "John the Ripper", "OpenSSL", "RockYou"].map(tech => (
+                  <span key={tech} className="px-3 py-1 bg-black border border-primary/40 text-primary/80 text-xs font-mono">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                  <FaLock className="text-secondary" />
+                  Methodology
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {[
+                    {
+                      phase: "Phase 1",
+                      title: "Dictionary Attack",
+                      desc: "Used RockYou dataset to simulate leaked password exploitation"
+                    },
+                    {
+                      phase: "Phase 2",
+                      title: "Rule-Based Attack",
+                      desc: "Applied mutation rules to test common corporate password patterns"
+                    },
+                    {
+                      phase: "Phase 3",
+                      title: "Targeted Attack",
+                      desc: "Created custom wordlist to simulate insider knowledge attacks"
+                    }
+                  ].map((p, i) => (
+                    <div key={i} className="border border-white/10 bg-black/30 p-4">
+                      <span className="text-xs font-mono text-primary mb-2 block">{p.phase}</span>
+                      <h5 className="text-white font-bold mb-1">{p.title}</h5>
+                      <p className="text-sm text-muted-foreground">{p.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="border-t border-white/10 pt-6">
+                <h4 className="text-lg font-bold text-white mb-4">Audit Results</h4>
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div className="border border-primary/30 bg-primary/5 p-4">
+                    <div className="text-3xl font-black text-primary">6</div>
+                    <div className="text-xs text-muted-foreground font-mono mt-1">ACCOUNTS TESTED</div>
+                  </div>
+                  <div className="border border-accent/30 bg-accent/5 p-4">
+                    <div className="text-3xl font-black text-accent">3</div>
+                    <div className="text-xs text-muted-foreground font-mono mt-1">PASSWORDS CRACKED</div>
+                  </div>
+                  <div className="border border-secondary/30 bg-secondary/5 p-4">
+                    <div className="text-3xl font-black text-secondary">50%</div>
+                    <div className="text-xs text-muted-foreground font-mono mt-1">COMPROMISE RATE</div>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground mt-4 italic">
+                  Weak passwords were cracked instantly, while complex passwords resisted dictionary, mutation, and targeted attacks.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+            {/* Project 2: CyberLab VAPT */}
+            <motion.div variants={itemVariants} className="relative border border-secondary/30 bg-card/40 backdrop-blur-sm p-8 md:p-10 hover:border-secondary/50 transition-colors duration-300">
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white font-display mb-2 flex items-center gap-3">
+                    <FaShieldAlt className="text-secondary" />
+                    CyberLab VAPT
+                  </h3>
+                  <p className="text-secondary text-sm font-mono mb-4">Automated Vulnerability Assessment & Penetration Testing Lab</p>
+                  <a
+                    href="https://github.com/PoovarasuV/CyberLab-VAPT-Automated-Vulnerability-Assessment-Penetration-Testing-Lab"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 border border-secondary/50 text-secondary hover:bg-secondary hover:text-black transition-all duration-300 text-sm font-mono"
+                  >
+                    <FaGithub /> View Repository
+                  </a>
+                </div>
+                <div className="flex gap-2 shrink-0">
+                  {["Docker", "Nessus", "DVWA", "Kali Linux"].map(tech => (
+                    <span key={tech} className="px-3 py-1 bg-black border border-secondary/40 text-secondary/80 text-xs font-mono">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                    <FaLock className="text-primary" />
+                    Lab Features
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      "Fully containerized vulnerable environment using Docker",
+                      "Automated Nessus scanning for localhost",
+                      "Manual SQL Injection exploitation (DVWA)",
+                      "SSH & FTP credential testing",
+                      "MD5 hash security analysis",
+                      "Professional PDF & Markdown reporting"
+                    ].map((feature, i) => (
+                      <div key={i} className="border border-white/10 bg-black/30 p-3">
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t border-white/10 pt-6">
+                  <h4 className="text-lg font-bold text-white mb-4">Skills Demonstrated</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Penetration Testing Lab Setup",
+                      "Automated Vulnerability Scanning",
+                      "Manual SQL Injection",
+                      "Credential Extraction",
+                      "Hash Analysis",
+                      "Professional Security Reporting"
+                    ].map((skill, i) => (
+                      <span key={i} className="px-3 py-1 bg-secondary/10 border border-secondary/30 text-secondary text-xs font-mono">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </motion.section>
 
         {/* SKILLS SECTION */}
@@ -499,7 +683,7 @@ const Home = () => {
           className="py-24 border-t border-white/10"
         >
           <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-display font-bold mb-12 flex items-center">
-            <span className="text-primary mr-4">05.</span> 
+            <span className="text-primary mr-4">06.</span>
             <span className="neon-text-green">Core_Capabilities</span> (Skills)
           </motion.h2>
 
