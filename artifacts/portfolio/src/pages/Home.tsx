@@ -14,6 +14,10 @@ const salesImages = [
   "/sales-6.png",
 ];
 
+const fitaiImages = [
+  "/fitai-1.png",
+];
+
 const constImages = [
   "/const-1.png",
   "/const-2.png",
@@ -68,6 +72,7 @@ const Home = () => {
       stack: ["Prompt Engineering", "Generative AI"],
       color: "border-secondary",
       glow: "neon-border-cyan",
+      images: fitaiImages,
       desc: [
         "AI-powered customer engagement platform for lead conversion and retention.",
         "Automated workflows for inquiry handling, personalized recommendations, and follow-ups.",
