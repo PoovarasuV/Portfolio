@@ -407,6 +407,7 @@ const Home = () => {
                 textColor: "text-secondary",
                 icon: "🦷",
                 tags: ["React", "Tailwind CSS", "Responsive Design"],
+                images: ["/dental-1.png","/dental-2.png","/dental-3.png","/dental-4.png","/dental-5.png","/dental-6.png","/dental-7.png","/dental-8.png","/dental-9.png","/dental-10.png"],
                 points: [
                   "Customized clinic website with appointment booking and service showcase.",
                   "Patient-friendly UI with treatment gallery and doctor profile.",
@@ -453,7 +454,7 @@ const Home = () => {
                     <span key={tag} className={`text-xs font-mono px-2 py-1 bg-black border ${project.color}/40 text-white/70`}>{tag}</span>
                   ))}
                 </div>
-                <ul className="space-y-2 mt-auto text-sm text-muted-foreground">
+                <ul className="space-y-2 text-sm text-muted-foreground mb-5">
                   {project.points.map((pt, i) => (
                     <li key={i} className="flex items-start">
                       <span className={`${project.textColor} mr-2 mt-0.5`}>›</span>
@@ -461,6 +462,26 @@ const Home = () => {
                     </li>
                   ))}
                 </ul>
+                {'images' in project && project.images && (
+                  <div className="mt-auto pt-4 border-t border-white/10">
+                    <p className={`text-xs font-mono uppercase tracking-widest ${project.textColor} mb-3`}>[ screenshots ]</p>
+                    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20">
+                      {(project.images as string[]).map((src, i) => (
+                        <button
+                          key={i}
+                          onClick={() => openLightbox(i, project.images as string[], project.client)}
+                          className={`relative shrink-0 w-28 h-16 overflow-hidden border ${project.color}/30 hover:${project.color} transition-all duration-300`}
+                        >
+                          <img src={src} alt={`Screenshot ${i + 1}`} className="w-full h-full object-cover transition-transform duration-300 hover:scale-110" />
+                          <div className="absolute inset-0 bg-black/40 hover:bg-black/10 transition-colors duration-300" />
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <span className={`${project.textColor} text-xs font-mono`}>[ view ]</span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>
