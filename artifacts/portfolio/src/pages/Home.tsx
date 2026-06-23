@@ -373,13 +373,10 @@ const Home = () => {
             <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-secondary/5 blur-2xl"></div>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>
-                <div className="flex items-center gap-3 mb-1">
-                  <h3 className="text-3xl font-black font-display tracking-tight">
-                    <span className="neon-text-cyan">FENZO</span>{' '}
-                    <span className="text-white">WEB DESIGN</span>
-                  </h3>
-                  <span className="px-2 py-0.5 text-xs font-mono border border-secondary/50 text-secondary bg-secondary/10 uppercase tracking-widest">Founder &amp; CEO</span>
-                </div>
+                <h3 className="text-3xl font-black font-display tracking-tight mb-1">
+                  <span className="neon-text-cyan">FENZO</span>{' '}
+                  <span className="text-white">WEB DESIGN</span>
+                </h3>
                 <p className="text-white/50 text-sm font-mono mb-2">Poovarasu V — Owner &amp; Lead Developer</p>
                 <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
                   My own digital agency — building websites, mobile apps, e-commerce platforms, AI solutions, business automation systems, and logo designs that help companies scale faster.
