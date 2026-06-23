@@ -14,13 +14,24 @@ const salesImages = [
   "/sales-6.png",
 ];
 
-const Home = () => {
-  const [lightbox, setLightbox] = useState<{ open: boolean; idx: number }>({ open: false, idx: 0 });
+const constImages = [
+  "/const-1.png",
+  "/const-2.png",
+  "/const-3.png",
+  "/const-4.png",
+  "/const-5.png",
+  "/const-6.png",
+  "/const-7.png",
+  "/const-8.png",
+];
 
-  const openLightbox = (idx: number) => setLightbox({ open: true, idx });
-  const closeLightbox = () => setLightbox({ open: false, idx: 0 });
-  const prevImg = (e: React.MouseEvent) => { e.stopPropagation(); setLightbox(l => ({ ...l, idx: (l.idx - 1 + salesImages.length) % salesImages.length })); };
-  const nextImg = (e: React.MouseEvent) => { e.stopPropagation(); setLightbox(l => ({ ...l, idx: (l.idx + 1) % salesImages.length })); };
+const Home = () => {
+  const [lightbox, setLightbox] = useState<{ open: boolean; idx: number; images: string[]; label: string }>({ open: false, idx: 0, images: [], label: "" });
+
+  const openLightbox = (idx: number, images: string[], label: string) => setLightbox({ open: true, idx, images, label });
+  const closeLightbox = () => setLightbox(l => ({ ...l, open: false }));
+  const prevImg = (e: React.MouseEvent) => { e.stopPropagation(); setLightbox(l => ({ ...l, idx: (l.idx - 1 + l.images.length) % l.images.length })); };
+  const nextImg = (e: React.MouseEvent) => { e.stopPropagation(); setLightbox(l => ({ ...l, idx: (l.idx + 1) % l.images.length })); };
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -64,14 +75,16 @@ const Home = () => {
       ]
     },
     {
-      title: "Prompt Engineering Lab",
-      stack: ["LangChain", "OpenAI API", "Python"],
+      title: "Construction Delay Root Cause Analyzer",
+      stack: ["Python", "Spark", "Hadoop", "Random Forest", "Streamlit"],
       color: "border-accent",
       glow: "neon-border-purple",
+      images: constImages,
       desc: [
-        "Systematic prompt optimization framework for production LLM applications.",
-        "Few-shot learning templates, chain-of-thought reasoning, and output formatting.",
-        "A/B testing infrastructure to measure prompt quality and response accuracy."
+        "Predicts construction delays using a Random Forest Classifier with ~96% accuracy and 0.97 F1 score.",
+        "Identifies root causes of delays — labor shortage, material delays, weather, poor planning, or regulatory issues.",
+        "Handles large-scale data via Hadoop (HDFS) and Apache Spark/PySpark for efficient distributed processing.",
+        "Interactive Streamlit dashboard for instant delay prediction, root cause analysis, and visual insights."
       ]
     },
     {
@@ -302,7 +315,7 @@ const Home = () => {
                       {(project.images as string[]).map((src, i) => (
                         <button
                           key={i}
-                          onClick={() => openLightbox(i)}
+                          onClick={() => openLightbox(i, project.images as string[], project.title)}
                           className="relative shrink-0 w-40 h-24 overflow-hidden border border-primary/30 hover:border-primary transition-all duration-300 group/thumb"
                           data-testid={`project-screenshot-${i}`}
                         >
@@ -450,14 +463,14 @@ const Home = () => {
               onClick={e => e.stopPropagation()}
             >
               <img
-                src={salesImages[lightbox.idx]}
+                src={lightbox.images[lightbox.idx]}
                 alt={`Screenshot ${lightbox.idx + 1}`}
                 className="w-full h-auto object-contain"
               />
               <div className="bg-black/80 px-4 py-2 flex items-center justify-between">
-                <span className="font-mono text-primary text-sm">AI Sales Assistant — Screenshot {lightbox.idx + 1} / {salesImages.length}</span>
+                <span className="font-mono text-primary text-sm">{lightbox.label} — Screenshot {lightbox.idx + 1} / {lightbox.images.length}</span>
                 <div className="flex gap-2">
-                  {salesImages.map((_, i) => (
+                  {lightbox.images.map((_, i) => (
                     <button
                       key={i}
                       onClick={e => { e.stopPropagation(); setLightbox(l => ({ ...l, idx: i })); }}
